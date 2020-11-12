@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Demo', //Nombre de la app
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Mi aplicación conti'),
@@ -31,40 +31,45 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Container(color: Colors.red, child: Text("hola")),
+        actions: [Text("adasdsadrf")],
+        backgroundColor: Colors.green,
+        elevation: 7,
+        
       ),
-      body: Center(
-        child: FutureBuilder(
-            future: getTwittsResponse(),
-            builder: (ctx, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                var list = getTwitts(snapshot.data);
-                return ListView(
-                  children: list
-                      .map<Widget>((t) => Text("Twitt: ${t.content}"))
-                      .toList(),
-                );
-              } else
-                return Text("no twits");
-            }),
+      body: Container(
+        color: Colors.deepPurple,
+        width: double.infinity,
+        child:Column(
+          children: [
+            Text("estamo activo papi", style: TextStyle(color: Color(0xFFEF5350)),
+
+            
+            ),
+            Text("Hola crack"),
+            Row(children: [
+              Column(
+                children:[
+                  Icon(Icons.card_giftcard),
+                  Text("hola")
+                ],
+              ),
+              Icon(Icons.verified_user),
+              Icon(Icons.car_repair),
+              Text("asasdasd"),
+              Container(color:Colors.blue,
+              child:Image.network("https://images.unsplash.com/photo-1600087626014-e652e18bbff2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80"))
+              
+              ],)
+          ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
